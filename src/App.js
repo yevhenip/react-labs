@@ -1,25 +1,55 @@
-import logo from './logo.svg';
 import './App.css';
+import {Component} from "react";
+
+function Something() {
+    return <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, accusantium ad aliquam aut consequatur
+        consequuntur corporis enim, eos explicabo hic magni natus neque odio pariatur perspiciatis quam quis ullam
+        vero.</p>
+}
+
+function Data(data) {
+    return <p> Data {JSON.stringify(data)} </p>;
+}
+
+function DateTime() {
+    return (
+        <div>
+            {new Date().toLocaleTimeString()}
+        </div>
+    );
+}
+
+class ClassDateTime extends Component {
+
+    render() {
+        return (
+            <div>
+                {new Date().toLocaleTimeString()}
+            </div>
+        );
+    }
+}
+
+class ClassComponent extends Component {
+    render() {
+        return (
+            <div>
+                {JSON.stringify(this.state)}
+            </div>
+        );
+    }
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Something/>
+            <Data {...{"q": 2, 2: "q"}}/>
+            <DateTime/>
+            <ClassDateTime/>
+            <ClassComponent/>
+        </div>
+    );
 }
 
 export default App;
